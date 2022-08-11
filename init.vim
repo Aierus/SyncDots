@@ -1,4 +1,3 @@
-filetype plugin on
 if &compatible
   " Vim defaults to `compatible` when selecting a vimrc with the command-line
   " `-u` argument. Override this.
@@ -116,11 +115,12 @@ nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
 :command FormatJSON %!python -m json.tool
 
-" full-stack dev
-" au BufNewFile,BufRead *.js,*.html,*.css
-"     \ set tabstop=2
-"     \ set softtabstop=2
-"     \ set shiftwidth=2
+autocmd FileType html setlocal shiftwidth=2 tabstop=2
+autocmd FileType css setlocal shiftwidth=2 tabstop=2
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+autocmd FileType python setlocal shiftwidth=2 tabstop=2
+autocmd FileType ocaml setlocal shiftwidth=2 tabstop=2
+autocmd FileType make setlocal shiftwidth=2 tabstop=2
 
 " airline config
 let g:airline#extensions#tabline#enabled = 1
