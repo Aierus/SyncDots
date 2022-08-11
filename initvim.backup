@@ -8,9 +8,10 @@ set laststatus=2
 
 call plug#begin(stdpath('data') . '/plugged')
 
+Plug 'junegunn/vim-easy-align'
+
 " Themes
 Plug 'morhetz/gruvbox'
-Plug 'ellisionleao/gruvbox.nvim'
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'sainnhe/everforest'
 Plug 'dracula/vim'
@@ -34,14 +35,12 @@ Plug 'preservim/nerdcommenter'
 " writing plugins
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/goyo.vim'
-Plug 'junegunn/vim-easy-align'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 
 " syntax plugins
 Plug 'vim-python/python-syntax'
 Plug 'pangloss/vim-javascript'
-Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'nvie/vim-flake8'
 Plug 'elzr/vim-json'
 Plug 'rust-lang/rust.vim'
@@ -49,9 +48,12 @@ Plug 'tomlion/vim-solidity'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'davidhalter/jedi-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'nvim-treesitter/nvim-treesitter, {'do': 'TSUpdate'}
-Plug 'dense-analysis/ale'
+Plug 'vim-syntastic/syntastic'
 Plug 'evanleck/vim-svelte'
+
+" python REPL
+Plug 'sillybun/vim-repl'
+Plug 'fisadev/vim-isort'
 
 " nvim collaboration
 Plug 'jbyuki/instant.nvim'
@@ -60,17 +62,9 @@ Plug 'jbyuki/instant.nvim'
 Plug 'scrooloose/nerdtree' 
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'ryanoasis/vim-devicons'
+Plug 'ryanoasis/vim-devicons' 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-
-" clipboard helper
-Plug 'tpope/vim-repeat'
-Plug 'svermeulen/vim-easyclip'
-
-Plug 'wxfr/minimap.vim'
-Plug 'jiangmiao/auto-pairs'
-Plug 'alvan/vim-closetag'
 
 call plug#end()
 
@@ -79,26 +73,12 @@ syntax on
 colo gruvbox
 set t_Co=256
 set bg=dark
-let &t_ut=''
 
 " etc
-set ignorecase
-set ttyfast
-set encoding=utf-8
-set showmode
-set showcmd
-set matchpairs+=<:>
-set hlsearch
-set nolist
-set rnu
-filetype on
-filetype plugin indent on
-set path+=**
 set mouse=a
-set clipboard+=unnamedplus
-set runtimepath^=~/.vim runtimepath+=~/.vim/after
-let &packpath = &runtimepath
-
+set ignorecase
+set encoding=utf-8
+set showcmd 
 let mapleader=","
 let g:mapleader=","
 let g:instant_username = "aierus"
@@ -107,14 +87,14 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 " set tab size
 set tabstop=4
 set shiftwidth=4
+filetype plugin indent on
 set expandtab " makes tabs spaces
 set autoindent " smart indent
 set showtabline=0  " always show tablines
 set number " line numbers
 set backspace=2
-nnoremap <C-Left> :tabprevious<CR>
-nnoremap <C-Right> :tabnext<CR>
-:command FormatJSON %!python -m json.tool
+nnoremap <C-Left> :tabprevious<CR> 
+nnoremap <C-Right> :tabnext<CR> 
 
 " full-stack dev
 " au BufNewFile,BufRead *.js,*.html,*.css
@@ -124,11 +104,10 @@ nnoremap <C-Right> :tabnext<CR>
 
 " airline config
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 1 
 
 " python highlight all
 let g:python_highlight_all = 1
-let g:python_3_host_prog = '/usr/bin/python3'
 
 " NERDTree config
 map <C-n> :NERDTreeToggle<CR>
@@ -189,6 +168,8 @@ let g:limelight_conceal_ctermfg = 240
 let g:limelight_conceal_guifg = 'DarkGray'
 let g:limelight_conceal_guifg = '#777777'
 
+
+
 " REPL Config
 let g:repl_position = 0 " move repl box to bottom
 let g:repl_width = 38
@@ -205,9 +186,7 @@ let g:vim_isort_python_version = 'python3'
 
 set noshowmode " remove redundancy
 
-" coc nvim stuff
-set cmdheight=2
-
+" nvim stuff
 " TextEdit might fail if hidden is not set.
 set hidden
 
@@ -370,9 +349,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " " Resume latest coc list.
 " nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
-set path+=**
 set mouse=a
-set clipboard+=unnamedplus
+set clipboard=unnamedplus
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 
