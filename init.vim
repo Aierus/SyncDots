@@ -4,13 +4,13 @@ if &compatible
   " `-u` argument. Override this.
   set nocompatible
 endif
-set laststatus=2 
+set laststatus=2
 
 call plug#begin(stdpath('data') . '/plugged')
 
 " Themes
 Plug 'morhetz/gruvbox'
-Plug 'ellisionleao/gruvbox.nvim'
+Plug 'ellisonleao/gruvbox.nvim'
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'sainnhe/everforest'
 Plug 'dracula/vim'
@@ -49,7 +49,7 @@ Plug 'tomlion/vim-solidity'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'davidhalter/jedi-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'nvim-treesitter/nvim-treesitter, {'do': 'TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': 'TSUpdate'}
 Plug 'dense-analysis/ale'
 Plug 'evanleck/vim-svelte'
 
@@ -57,7 +57,7 @@ Plug 'evanleck/vim-svelte'
 Plug 'jbyuki/instant.nvim'
 
 " file navigation
-Plug 'scrooloose/nerdtree' 
+Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
@@ -68,7 +68,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-repeat'
 Plug 'svermeulen/vim-easyclip'
 
-Plug 'wxfr/minimap.vim'
+Plug 'wfxr/minimap.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'alvan/vim-closetag'
 
